@@ -7,7 +7,7 @@
   "author": "jovan panji pratama",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "node index.js"
   },
   "dependencies": {
     "body-parser": "^1.20.2",
