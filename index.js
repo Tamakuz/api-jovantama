@@ -18,7 +18,7 @@ app.use(
 
 // const url = "mongodb://127.0.0.1:27017/personal_branding";
 const url =
-  "mongodb+srv://jovangithub:jovangithub>@personal.cl2jypz.mongodb.net/personal_branding?retryWrites=true&w=majority";
+  "mongodb+srv://jovangithub:jovangithub@personal.cl2jypz.mongodb.net/personal_branding?retryWrites=true&w=majority";
 
 mongoose
   .connect(url)
