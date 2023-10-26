@@ -37,12 +37,12 @@ export const getTags = async (req, res) => {
   }
 };
 
-export const deleteTagById = async (req, res) => {
+export const deleteTag = async (req, res) => {
   try {
-    const { id } = req.params;
+    const { tagParam } = req.params;
 
     // Mencari tag berdasarkan ID
-    const tag = await Tags.findById(id);
+    const tag = await Tags.findOne({tag: tagParam});
 
     // Jika tag tidak ditemukan, kirimkan respons dengan status 404
     if (!tag) {

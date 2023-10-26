@@ -15,7 +15,7 @@ export const createWork = async (req, res) => {
     const { titleWork, year, tags, desc } = req.body;
     const { file } = req;
 
-    const destination = `Works/${Date.now()}_${file.originalname}`;
+    const destination = `Works/${Date.now()}_${req.file.originalname}`;
     const fileUrl = await firebaseUpload(
       destination,
       file.mimetype,
@@ -29,14 +29,10 @@ export const createWork = async (req, res) => {
       return validationErrorResponse(res, true, "Semua field harus diisi");
     }
 
-    const array = JSON.parse(tags);
-    // Mengambil semua nilai "tag" yang dikirim dalam request
-    const tagValues = array.map((tag) => tag.trim());
-
     // Mencari tag yang memiliki nilai "tag" yang sesuai dalam model "Tag"
-    const existingTags = await Tag.find({ tag: { $in: tagValues } });
+    const existingTags = await Tag.find({ tag: { $in: tags } });
 
-    if (existingTags.length !== tagValues.length) {
+    if (existingTags.length !== tags.length) {
       // Jika tidak semua tag ditemukan, kirimkan respons dengan pesan kesalahan
       return validationErrorResponse(res, true, "Beberapa tag tidak valid");
     }

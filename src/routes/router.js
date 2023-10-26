@@ -9,7 +9,7 @@ import {
 import upload from "../middlewares/multer.js";
 import {
   createTags,
-  deleteTagById,
+  deleteTag,
   getTags,
 } from "../controllers/tags.controller.js";
 import { createWork, deleteWork, getAllWorks, getWorkById } from "../controllers/work.controller.js";
@@ -25,7 +25,7 @@ Router.get("/using-now", getUsingNow);
 // tag routing
 Router.get("/tags", getTags);
 Router.post("/tags", createTags);
-Router.delete("/tags/:id", deleteTagById);
+Router.delete("/tags/:tagParam", deleteTag);
 
 // work route
 Router.post("/works", upload.single("thumbnail"), createWork);
